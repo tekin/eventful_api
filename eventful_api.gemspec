@@ -17,5 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
+  gem.add_dependency  "oauth", ["~> 0.3.6"]
+
   gem.add_development_dependency  "test-unit", ["~> 2.5.4"]
 end

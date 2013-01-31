@@ -49,4 +49,4 @@ License
 -------
 Released under the MIT License.  See the [LICENSE][license] file for further details.
 
-[license]: https://github.com/tekin/eventful_api/blob/master/LICENSE.md
+[license]: LICENSE.md

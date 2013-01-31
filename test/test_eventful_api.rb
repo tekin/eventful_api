@@ -28,6 +28,7 @@ class TestEventfulApi < MiniTest::Unit::TestCase
       it 'returns a configured OAuth::Consumer' do
         consumer = EventfulApi.oauth_consumer
 
+        assert consumer.is_a?(OAuth::Consumer)
         assert_equal 'secret', consumer.secret
         assert_equal 'key', consumer.key
         assert_equal EventfulApi::SITE_URL, consumer.site

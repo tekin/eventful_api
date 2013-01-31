@@ -1,5 +1,6 @@
 require 'oauth'
-require "eventful_api/version"
+require 'eventful_api/client'
+require 'eventful_api/version'
 
 module EventfulApi
   SITE_URL = 'http://eventful.com'

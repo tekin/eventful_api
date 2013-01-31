@@ -1,3 +1,5 @@
+require 'addressable/uri'
+
 module EventfulApi
   class Client
     attr_reader :access_token
@@ -7,7 +9,17 @@ module EventfulApi
     end
 
     def get(method, params)
-      access_token.get('/events/get?id=E0-001-053639493-9')
+      access_token.get get_path(method, params)
+    end
+
+    private
+
+    def get_path(path, params)
+      Addressable::URI.new(:path => json_path(path), :query_values => params).to_s
+    end
+
+    def json_path(path)
+      "/json#{path}"
     end
   end
 end

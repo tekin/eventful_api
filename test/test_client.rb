@@ -17,8 +17,9 @@ class TestEventfulApi < MiniTest::Unit::TestCase
     end
 
     describe 'making a GET API call with parameters' do
-      it 'delegates the request to the access token' do
-        @client.access_token.expects(:get).with('/events/get?id=E0-001-053639493-9').returns('{["data"]}')
+      it 'transform and delegate the request to the access token' do
+        @client.access_token.expects(:get).with('/json/events/get?id=E0-001-053639493-9').returns('{["data"]}')
+
         @client.get('/events/get', :id => 'E0-001-053639493-9')
       end
     end

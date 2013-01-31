@@ -24,8 +24,8 @@ class TestEventfulApi < MiniTest::Unit::TestCase
       end
 
       it 'returns a hash representation of the response body' do
-        @client.access_token.expects(:get).with('/json/events/get?id=V0-001-006696043-3').returns(mock_response)
-        response = @client.get('/events/get', :id => 'V0-001-006696043-3')
+        @client.access_token.expects(:get).with('/json/events/get?id=E0-001-054172192-4').returns(mock_response)
+        response = @client.get('/events/get', :id => 'E0-001-054172192-4')
 
         assert_equal ({'foo' => 'bar'}), response
       end

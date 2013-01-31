@@ -20,4 +20,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency  "oauth", ["~> 0.3.6"]
 
   gem.add_development_dependency  "test-unit", ["~> 2.5.4"]
+  gem.add_development_dependency  "mocha", ["~> 0.13.2"]
 end

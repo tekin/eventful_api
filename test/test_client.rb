@@ -15,5 +15,12 @@ class TestEventfulApi < MiniTest::Unit::TestCase
       assert_equal 'secret', access_token.secret
       assert_equal EventfulApi.oauth_consumer, access_token.consumer
     end
+
+    describe 'making a GET API call with parameters' do
+      it 'delegates the request to the access token' do
+        @client.access_token.expects(:get).with('/events/get?id=E0-001-053639493-9').returns('{["data"]}')
+        @client.get('/events/get', :id => 'E0-001-053639493-9')
+      end
+    end
   end
 end

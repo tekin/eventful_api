@@ -7,10 +7,12 @@ class TestEventfulApi < MiniTest::Unit::TestCase
       EventfulApi.configure do |config|
         config.consumer_key = 'key'
         config.consumer_secret = 'secret'
+        config.app_key = 'app_key'
       end
 
       assert_equal 'key', EventfulApi.config.consumer_key
       assert_equal 'secret', EventfulApi.config.consumer_secret
+      assert_equal 'app_key', EventfulApi.config.app_key
     end
 
     describe 'once configured' do
@@ -18,6 +20,7 @@ class TestEventfulApi < MiniTest::Unit::TestCase
         EventfulApi.configure do |config|
           config.consumer_key = 'key'
           config.consumer_secret = 'secret'
+          config.app_key = 'app_key'
         end
       end
 

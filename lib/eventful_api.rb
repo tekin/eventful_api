@@ -6,7 +6,7 @@ module EventfulApi
   SITE_URL = 'http://eventful.com'
   SCHEME = :query_string
 
-  @config = Struct.new(:consumer_key, :consumer_secret).new
+  @config = Struct.new(:consumer_key, :consumer_secret, :app_key).new
 
   class << self
     attr_accessor :config

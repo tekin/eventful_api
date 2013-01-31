@@ -25,7 +25,7 @@ class TestEventfulApi < MiniTest::Unit::TestCase
         end
       end
 
-      it 'returns a configured OAuth::Consumer' do
+      it 'has an OAuth::Consumer instance' do
         consumer = EventfulApi.oauth_consumer
 
         assert consumer.is_a?(OAuth::Consumer)

@@ -1,4 +1,5 @@
 require 'addressable/uri'
+require 'multi_json'
 
 module EventfulApi
   class Client
@@ -9,7 +10,9 @@ module EventfulApi
     end
 
     def get(method, params)
-      access_token.get get_path(method, params)
+      response = access_token.get get_path(method, params)
+
+      MultiJson.load response.body
     end
 
     private

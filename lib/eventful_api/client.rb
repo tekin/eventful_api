@@ -7,7 +7,7 @@ module EventfulApi
     attr_reader :access_token, :oauth_consumer
 
     def initialize(params)
-      @oauth_consumer = OAuth::Consumer.new(EventfulApi.config.consumer_key, EventfulApi.config.consumer_secret, :site => API_URL, :scheme => EventfulApi::SCHEME)
+      @oauth_consumer = OAuth::Consumer.new(EventfulApi.consumer_key, EventfulApi.consumer_secret, :site => API_URL, :scheme => EventfulApi::SCHEME)
       @access_token = OAuth::AccessToken.new(oauth_consumer, params[:oauth_token], params[:oauth_secret])
     end
 
@@ -28,7 +28,7 @@ module EventfulApi
     end
 
     def api_params(params)
-      params.merge(:app_key => EventfulApi.config.app_key)
+      params.merge(:app_key => EventfulApi.app_key)
     end
   end
 end

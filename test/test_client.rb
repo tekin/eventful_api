@@ -46,6 +46,20 @@ class TestEventfulApi < MiniTest::Unit::TestCase
       end
     end
 
+    describe 'making a POST API call with parameters' do
+      it 'transforms the request and delegates the call through the access token' do
+        @client.access_token.expects(:post).with('/json/events/new', {:id => 'E0-001-053639493-9', :app_key => EventfulApi.app_key}).returns(mock_response)
+        response = @client.post('/events/new', :id => 'E0-001-053639493-9')
+      end
+
+      it 'returns a hash representation of the response body' do
+        @client.access_token.expects(:post).with('/json/events/new', {:id => 'E0-001-054172192-4', :app_key => EventfulApi.app_key}).returns(mock_response)
+        response = @client.post('/events/new', :id => 'E0-001-054172192-4')
+
+        assert_equal ({'foo' => 'bar'}), response
+      end
+    end
+
     def mock_response
       Struct.new(:body).new('{"foo": "bar"}')
     end

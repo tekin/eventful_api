@@ -13,7 +13,11 @@ module EventfulApi
 
     def get(method, params)
       response = access_token.get get_path(method, params)
+      MultiJson.load response.body
+    end
 
+    def post(method, params)
+      response = access_token.post(json_path(method), api_params(params))
       MultiJson.load response.body
     end
 

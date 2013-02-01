@@ -20,11 +20,16 @@ module EventfulApi
     private
 
     def get_path(path, params)
-      Addressable::URI.new(:path => json_path(path), :query_values => params).to_s
+      Addressable::URI.new(:path => json_path(path), :query_values => api_params(params)).to_s
     end
 
     def json_path(path)
       "/json#{path}"
     end
+
+    def api_params(params)
+      params.merge(:app_key => EventfulApi.config.app_key)
+    end
   end
 end
+

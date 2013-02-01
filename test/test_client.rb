@@ -34,13 +34,13 @@ class TestEventfulApi < MiniTest::Unit::TestCase
 
     describe 'making a GET API call with parameters' do
 
-      it 'transforms the request and delegates to the access token' do
-        @client.access_token.expects(:get).with('/json/events/get?id=E0-001-053639493-9').returns(mock_response)
+      it 'transforms the request and delegates the call through the access token' do
+        @client.access_token.expects(:get).with("/json/events/get?app_key=#{EventfulApi.config.app_key}&id=E0-001-053639493-9").returns(mock_response)
         @client.get('/events/get', :id => 'E0-001-053639493-9')
       end
 
       it 'returns a hash representation of the response body' do
-        @client.access_token.expects(:get).with('/json/events/get?id=E0-001-054172192-4').returns(mock_response)
+        @client.access_token.expects(:get).with("/json/events/get?app_key=#{EventfulApi.config.app_key}&id=E0-001-054172192-4").returns(mock_response)
         response = @client.get('/events/get', :id => 'E0-001-054172192-4')
 
         assert_equal ({'foo' => 'bar'}), response

@@ -63,7 +63,7 @@ redirect_to token.redirect_url
 Then it's a case of recreating the `OAuth::RequestToken` during the callback:
 
 ```ruby
-request_token = EventfulApi::OAuth::RequstToken.new(session[:request_token], session[:request_secret])
+request_token = OAuth::RequstToken.new(session[:request_token], session[:request_secret])
 ```
 
 ### Step 2. Acquiring an access token during the callback

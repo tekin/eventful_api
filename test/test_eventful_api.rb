@@ -24,12 +24,12 @@ class TestEventfulApi < MiniTest::Unit::TestCase
         end
       end
 
-      it 'has an OAuth::Consumer instance' do
+      it 'has an oauth consumer' do
         consumer = EventfulApi.oauth_consumer
 
         assert consumer.is_a?(OAuth::Consumer)
-        assert_equal 'secret', consumer.secret
         assert_equal 'key', consumer.key
+        assert_equal 'secret', consumer.secret
         assert_equal EventfulApi::SITE_URL, consumer.site
         assert_equal EventfulApi::SCHEME, consumer.scheme
       end

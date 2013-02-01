@@ -52,7 +52,7 @@ session[:request_token] = request_token
 redirect_to request_token.authorize_url
 ```
 
-The `OAuth::RequestToken` class is stable enough and the object instance transient enough that you are safe to store it in the session so that it is available to you when during the callback. Alternatively, you can store just the token and secret in the session:
+The `OAuth::RequestToken` class is stable enough and the object instance transient enough that you are safe to store it in the session so that it is available to you during the callback. Alternatively, you can store the token and secret only in the session:
 
 ```ruby
 session[:request_token] = request_token.token
@@ -60,11 +60,13 @@ session[:request_secret] = request_token.secret
 redirect_to token.redirect_url
 ```
 
-Then it's a case of recreating the `OAuth::RequestToken` during the callback:
+You'll then be able to reconstruct the request token during the callback:
 
 ```ruby
-request_token = OAuth::RequstToken.new(session[:request_token], session[:request_secret])
+request_token = OAuth::RequstToken.new(EventfulApi.oauth_consumer, session[:request_token], session[:request_secret])
 ```
+
+However, life is too short; just stick the whole thing in the session!
 
 ### Step 2. Acquiring an access token during the callback
 

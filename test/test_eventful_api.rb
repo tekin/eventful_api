@@ -32,5 +32,12 @@ class TestEventfulApi < MiniTest::Unit::TestCase
       assert_equal EventfulApi::SITE_URL,       consumer.site
       assert_equal EventfulApi::SCHEME,         consumer.scheme
     end
+
+    it 'delegates request token generation to its oauth consumer' do
+      options = { :callback_url => 'http://example.com/callback'}
+      EventfulApi.oauth_consumer.expects(:get_request_token).with(options).returns('token')
+
+      assert_equal 'token', EventfulApi.get_request_token(options)
+    end
   end
 end

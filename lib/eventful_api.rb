@@ -21,5 +21,9 @@ module EventfulApi
     def oauth_consumer
       @consumer ||= OAuth::Consumer.new(consumer_key, consumer_secret, :site => SITE_URL, :scheme => SCHEME)
     end
+
+    def get_request_token(options)
+      oauth_consumer.get_request_token(options)
+    end
   end
 end

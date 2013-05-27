@@ -2,8 +2,6 @@
 
 [![Build Status](https://api.travis-ci.org/tekin/eventful_api.png)](http://travis-ci.org/tekin/eventful_api)
 
-## Description
-
 A Ruby library for accessing the eventful.com API. It supports
 their new OAuth authentication method.
 

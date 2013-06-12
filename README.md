@@ -21,7 +21,7 @@ OAuth consumer secret:
 
 ```ruby
   EventfulApi.configure do |config|
-    config.application_key = YOUR_APPLICATION_KEY
+    config.appl_key = YOUR_APPLICATION_KEY
     config.consumer_key = YOUR_CONSUMER_KEY
     config.consumer_secret = YOUR_CONSUMER_SECRET
   end
@@ -31,7 +31,7 @@ You can make requests on behalf of a user once you have acquired their OAuth
 access token/secret pair by instantiating an `EventfulApi::Client`:
 
 ```ruby
-  client = EventfulApi::Client.new(:oauth_token => 'token', :oauth_token_secret => 'token secret')
+  client = EventfulApi::Client.new(:oauth_token => 'token', :oauth_secret => 'token secret')
 
   responsh_hash = client.post('/events/new', event_param_hash)
   response_hash = client.get('/events/get', {:id => 'E0-001-053639493-9'})

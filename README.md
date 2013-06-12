@@ -21,7 +21,7 @@ OAuth consumer secret:
 
 ```ruby
   EventfulApi.configure do |config|
-    config.appl_key = YOUR_APPLICATION_KEY
+    config.application_key = YOUR_APPLICATION_KEY
     config.consumer_key = YOUR_CONSUMER_KEY
     config.consumer_secret = YOUR_CONSUMER_SECRET
   end
